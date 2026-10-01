@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Ellenco - Obras</title>
+
+<!-- Tailwind -->
+<script src="https://cdn.tailwindcss.com"></script&gt;
+
+<script>
+tailwind.config = {
+theme: {
+extend: {
+colors: {
+ellenco: "#08088F"
+}
+}
+}
+}
+</script>
+</head>
+
+<body class="bg-gray-50 min-h-screen">
+
+<div class="flex min-h-screen">
+
+<!-- ================= MENU LATERAL ================= -->
+<aside class="w-56 bg-[#08088F] text-white flex flex-col">
+
+<!-- LOGO -->
+<div class="p-5 border-b border-blue-800">
+<img
+src="imagens/logo-ellenco.png"
+alt="Ellenco"
+class="w-32 mx-auto"
+>
+</div>
+
+<!-- MENU -->
+<nav class="flex-1 py-6">
+
+<!-- Dashboard -->
+<a
+href="index.html"
+class="flex items-center gap-3 px-6 py-3 hover:bg-blue-800 transition"
+>
+🏠
+<span>Dashboard</span>
+</a>
+
+<!-- Obras -->
+<a
+href="obras.html"
+class="flex items-center gap-3 px-6 py-3 bg-[#5D5DF5]"
+>
+🏗️
+<span>Obras</span>
+</a>
+
+<!-- Relatórios -->
+<a
+href="relatorio.html"
+class="flex items-center gap-3 px-6 py-3 hover:bg-blue-800 transition"
+>
+📄
+<span>Relatórios</span>
+</a>
+
+<!-- Usuário -->
+<a
+href="#"
+onclick="abrirUsuario()"
+class="flex items-center gap-3 px-6 py-3 hover:bg-blue-800 transition"
+>
+👤
+<span>Usuário</span>
+</a>
+
+<!-- Configurações -->
+<a
+href="#"
+onclick="abrirConfiguracoes()"
+class="flex items-center gap-3 px-6 py-3 hover:bg-blue-800 transition"
+>
+⚙️
+<span>Configurações</span>
+</a>
+
+</nav>
+
+<!-- SAIR -->
+<div class="p-5 border-t border-blue-800">
+
+<button
+onclick="sair()"
+class="flex items-center gap-3 hover:text-gray-300"
+>
+🚪
+<span>Sair</span>
+</button>
+
+</div>
+
+</aside>
+
+
+<!-- ================= CONTEÚDO ================= -->
+<main class="flex-1 p-8">
+
+<!-- CABEÇALHO -->
+<div class="flex justify-between items-center mb-8">
+
+<div>
+<h1 class="text-2xl font-bold text-gray-800">
+Obras
+</h1>
+
+<p class="text-gray-500 mt-1">
+Selecione uma obra para visualizar os registros e adicionar informações.
+</p>
+</div>
+
+<div class="flex items-center gap-3">
+
+<div class="text-right">
+<p class="font-semibold text-gray-800">
+Maria Clara
+</p>
+
+<p class="text-xs text-gray-500">
+Administradora
+</p>
+</div>
+
+<div class="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center">
+👤
+</div>
+
+</div>
+
+</div>
+
+
+<!-- ================= LISTA DE OBRAS ================= -->
+
+<div
+id="listaObras"
+class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+>
+
+<!-- OBRA 1 -->
+<div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+
+<img
+src="imagens/obra1.jpg"
+alt="Rua Jardim das Flores"
+class="w-full h-40 object-cover"
+>
+
+<div class="p-5">
+
+<h2 class="font-bold text-gray-800">
+Rua Jardim das Flores
+</h2>
+
+<p class="text-sm text-gray-500 mt-1">
+São Paulo - SP
+</p>
+
+<div class="mt-5">
+
+<div class="flex justify-between text-sm mb-2">
+<span>Progresso</span>
+<strong>68%</strong>
+</div>
+
+<div class="w-full bg-gray-200 rounded-full h-2">
+<div
+class="bg-[#08088F] h-2 rounded-full"
+style="width: 68%"
+></div>
+</div>
+
+</div>
+
+<button
+onclick="abrirObra(1)"
+class="w-full mt-5 bg-[#08088F] hover:bg-blue-800 text-white py-2.5 rounded-lg transition"
+>
+Abrir obra
+</button>
+
+</div>
+
+</div>
+
+
+<!-- OBRA 2 -->
+<div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+
+<img
+src="imagens/obra2.jpg"
+alt="Avenida Vista Alegre"
+class="w-full h-40 object-cover"
+>
+
+<div class="p-5">
+
+<h2 class="font-bold text-gray-800">
+Avenida Vista Alegre
+</h2>
+
+<p class="text-sm text-gray-500 mt-1">
+Sorocaba - SP
+</p>
+
+<div class="mt-5">
+
+<div class="flex justify-between text-sm mb-2">
+<span>Progresso</span>
+<strong>42%</strong>
+</div>
+
+<div class="w-full bg-gray-200 rounded-full h-2">
+<div
+class="bg-[#08088F] h-2 rounded-full"
+style="width: 42%"
+></div>
+</div>
+
+</div>
+
+<button
+onclick="abrirObra(2)"
+class="w-full mt-5 bg-[#08088F] hover:bg-blue-800 text-white py-2.5 rounded-lg transition"
+>
+Abrir obra
+</button>
+
+</div>
+
+</div>
+
+
+<!-- OBRA 3 -->
+<div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+
+<img
+src="imagens/obra3.jpg"
+alt="Rua Antônio Carlos"
+class="w-full h-40 object-cover"
+>
+
+<div class="p-5">
+
+<h2 class="font-bold text-gray-800">
+Rua Antônio Carlos
+</h2>
+
+<p class="text-sm text-gray-500 mt-1">
+Campinas - SP
+</p>
+
+<div class="mt-5">
+
+<div class="flex justify-between text-sm mb-2">
+<span>Progresso</span>
+<strong>78%</strong>
+</div>
+
+<div class="w-full bg-gray-200 rounded-full h-2">
+<div
+class="bg-[#08088F] h-2 rounded-full"
+style="width: 78%"
+></div>
+</div>
+
+</div>
+
+<button
+onclick="abrirObra(3)"
+class="w-full mt-5 bg-[#08088F] hover:bg-blue-800 text-white py-2.5 rounded-lg transition"
+>
+Abrir obra
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</main>
+
+</div>
+
+
+<!-- JavaScript -->
+<script src="js/obras.js"></script>
+
+</body>
+</html>

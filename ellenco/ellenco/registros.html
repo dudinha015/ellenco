@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0"
+>
+
+<title>Ellenco - Registro Diário</title>
+
+<script src="https://cdn.tailwindcss.com"></script&gt;
+
+<script>
+tailwind.config = {
+theme: {
+extend: {
+colors: {
+ellenco: "#08088F"
+}
+}
+}
+}
+</script>
+
+</head>
+
+
+<body class="bg-gray-50 min-h-screen">
+
+
+<div class="flex min-h-screen">
+
+
+<!-- ================= MENU ================= -->
+
+<aside class="w-56 bg-[#08088F] text-white flex flex-col">
+
+<div class="p-5 border-b border-blue-800">
+
+<img
+src="imagens/logo-ellenco.png"
+alt="Ellenco"
+class="w-32 mx-auto"
+>
+
+</div>
+
+
+<nav class="flex-1 py-6">
+
+<a
+href="index.html"
+class="flex items-center gap-3 px-6 py-3 hover:bg-blue-800"
+>
+🏠
+Dashboard
+</a>
+
+
+<a
+href="obras.html"
+class="flex items-center gap-3 px-6 py-3 bg-[#5D5DF5]"
+>
+🏗️
+Obras
+</a>
+
+
+<a
+href="relatorio.html"
+class="flex items-center gap-3 px-6 py-3 hover:bg-blue-800"
+>
+📄
+Relatórios
+</a>
+
+
+<a
+href="#"
+onclick="abrirUsuario()"
+class="flex items-center gap-3 px-6 py-3 hover:bg-blue-800"
+>
+👤
+Usuário
+</a>
+
+
+<a
+href="#"
+onclick="abrirConfiguracoes()"
+class="flex items-center gap-3 px-6 py-3 hover:bg-blue-800"
+>
+⚙️
+Configurações
+</a>
+
+</nav>
+
+
+<div class="p-5 border-t border-blue-800">
+
+<button
+onclick="sair()"
+class="flex gap-3"
+>
+🚪
+Sair
+</button>
+
+</div>
+
+</aside>
+
+
+
+<!-- ================= CONTEÚDO ================= -->
+
+<main class="flex-1 p-8">
+
+
+<div class="max-w-5xl mx-auto">
+
+
+<!-- TÍTULO -->
+
+<div class="mb-6">
+
+<h1
+id="nomeObra"
+class="text-2xl font-bold text-gray-800"
+>
+Registro diário da obra
+</h1>
+
+<p
+id="localObra"
+class="text-gray-500"
+>
+Carregando obra...
+</p>
+
+</div>
+
+
+
+<!-- ================= DADOS ================= -->
+
+<div class="bg-white rounded-xl shadow-sm border p-6">
+
+
+<h2 class="font-bold text-lg mb-5">
+Informações do registro
+</h2>
+
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+
+
+<!-- DATA -->
+
+<div>
+
+<label class="block text-sm font-medium mb-2">
+Data
+</label>
+
+<input
+type="date"
+id="data"
+class="w-full border rounded-lg px-3 py-2"
+>
+
+</div>
+
+
+
+<!-- HORÁRIO -->
+
+<div>
+
+<label class="block text-sm font-medium mb-2">
+Horário
+</label>
+
+<input
+type="time"
+id="horario"
+class="w-full border rounded-lg px-3 py-2"
+>
+
+</div>
+
+
+
+<!-- TURNO -->
+
+<div>
+
+<label class="block text-sm font-medium mb-2">
+Turno
+</label>
+
+<select
+id="turno"
+class="w-full border rounded-lg px-3 py-2"
+>
+
+<option value="">
+Selecione
+</option>
+
+<option value="Manhã">
+Manhã
+</option>
+
+<option value="Tarde">
+Tarde
+</option>
+
+<option value="Noite">
+Noite
+</option>
+
+</select>
+
+</div>
+
+
+
+<!-- CLIMA -->
+
+<div>
+
+<label class="block text-sm font-medium mb-2">
+Clima
+</label>
+
+<select
+id="clima"
+class="w-full border rounded-lg px-3 py-2"
+>
+
+<option value="">
+Selecione
+</option>
+
+<option value="Ensolarado">
+Ensolarado
+</option>
+
+<option value="Nublado">
+Nublado
+</option>
+
+<option value="Chuvoso">
+Chuvoso
+</option>
+
+<option value="Parcialmente nublado">
+Parcialmente nublado
+</option>
+
+</select>
+
+</div>
+
+
+</div>
+
+
+
+<!-- ================= FOTOS ================= -->
+
+<div class="mt-8">
+
+<h2 class="font-bold text-lg mb-3">
+Adicionar fotos
+</h2>
+
+
+<input
+type="file"
+id="fotos"
+accept="image/*"
+multiple
+class="w-full border rounded-lg p-3"
+>
+
+
+<div
+id="previewFotos"
+class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4"
+>
+</div>
+
+</div>
+
+
+
+<!-- ================= RELATO ================= -->
+
+<div class="mt-8">
+
+<label class="block font-bold mb-2">
+Relato do dia
+</label>
+
+<textarea
+id="descricao"
+rows="5"
+placeholder="Descreva as atividades realizadas na obra..."
+class="w-full border rounded-lg p-3 resize-none"
+></textarea>
+
+</div>
+
+
+
+<!-- ================= LOCALIZAÇÃO ================= -->
+
+<div class="mt-8">
+
+<h2 class="font-bold text-lg mb-3">
+Localização (Georreferenciada)
+</h2>
+
+
+<div class="flex gap-3">
+
+
+<input
+type="text"
+id="localizacao"
+readonly
+placeholder="Clique em obter localização"
+class="flex-1 border rounded-lg px-3 py-2 bg-gray-50"
+>
+
+
+<button
+type="button"
+onclick="obterLocalizacao()"
+class="bg-[#08088F] text-white px-5 py-2 rounded-lg hover:bg-blue-800"
+>
+📍 Obter localização
+</button>
+
+</div>
+
+
+<p
+id="statusLocalizacao"
+class="text-sm text-gray-500 mt-2"
+></p>
+
+</div>
+
+
+
+<!-- ================= BOTÕES ================= -->
+
+<div class="flex justify-end gap-3 mt-8">
+
+
+<button
+type="button"
+onclick="voltarObras()"
+class="border px-6 py-2 rounded-lg"
+>
+Voltar
+</button>
+
+
+<button
+type="button"
+onclick="salvarRegistro()"
+class="bg-[#08088F] text-white px-6 py-2 rounded-lg hover:bg-blue-800"
+>
+Salvar registro
+</button>
+
+
+<button
+type="button"
+onclick="elaborarRelatorio()"
+class="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700"
+>
+Elaborar relatório
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</main>
+
+</div>
+
+
+<script src="js/registro.js"></script>
+
+
+</body>
+</html>
